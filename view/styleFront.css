@@ -1,0 +1,30 @@
+body{
+    padding:0;
+    margin:0;
+}
+html{
+    margin:0;
+    padding:0;
+}
+.sezione{
+    height:100vh;
+}
+.colonna1{
+    overflow-y:hidden;
+    height:100vh;
+    background-color:#343131;
+    padding:0 !important;
+    position:fixed !important;
+}
+.testa{
+    min-width:100%;
+    height:15vh;
+    background-color:#2980B9;
+    margin:0;
+}
+.testa a:hover{
+    text-decoration: none;
+}
+.titolo{
+    padding-top:12.5%;
+}

@@ -1,0 +1,27 @@
+body {
+
+  background-color: #FFFFFF;
+  font-family: Verdana,sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.left-container {
+
+  background-color: #4a84ff;
+
+}
+
+.right-container {
+
+  background-color: #FFFFFF;
+}
+
+.round-borders {
+
+  border: 1px solid #ccc !important;
+  padding: 0.01em 16px;
+  border-radius: 16px;
+  box-sizing: inherit;
+
+}
