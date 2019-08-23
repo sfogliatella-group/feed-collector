@@ -9,9 +9,24 @@ def getNews(query):
     res = requests.get(url)
     gNews = res.json()
     allNews = []
+    urls = []
 
-    for news in range(20):
+    news = 0
+    count = 0
+
+    #Why with while prints even same news
+    #and with for prints differents news??? WTF
+    #while(news == 0):
+
+    for news in range(10):
         StatusNews = gNews.get('articles')
-        allNews.append(tuple((StatusNews[news].get('title'), StatusNews[news].get('publishedAt'))))
 
-    return allNews
+        if not StatusNews:
+            break
+
+        allNews.append(tuple((StatusNews[news].get('title'), StatusNews[news].get('publishedAt'))))
+        urls.append(StatusNews[news].get('url'))
+
+
+
+    return allNews, urls

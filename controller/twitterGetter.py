@@ -13,9 +13,23 @@ def getTweet(query):
     res = requests.get(url, params = pms, auth=auth)
     tweets = res.json()
     allTweets = []
-    
-    for tweet in range(20):
+
+    stop = 0
+    count = 0
+
+    while(stop == 0):
         StatusTweet = tweets.get('statuses')
-        allTweets.append(tuple((StatusTweet[tweet].get('text'), StatusTweet[tweet].get('created_at'))))
+
+        if not StatusTweet:
+            break
+            
+        allTweets.append(tuple((StatusTweet[count].get('text'), StatusTweet[count].get('created_at'))))
+
+        count = count + 1
+
+        if(count == 10):
+            break
+
+
     return allTweets
 #TODO Function to get time of tweet

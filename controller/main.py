@@ -7,35 +7,44 @@ from datetime import datetime as dt
 inputQ = input("\nInsert query to search\n")
 
 allTweets = twitterGetter.getTweet(inputQ)
-allNews   = googleNewsGetter.getNews(inputQ)
+allNews, urlNews = googleNewsGetter.getNews(inputQ)
 
-tweetList, secondListT = zip(*allTweets)
-newsList, secondListG = zip(*allNews)
+def twitter_res(listTweets):
+    tweetList, secondListT = zip(*listTweets)
+    dt_listT = []
+    for i in range(10):
+        dt_listT.append(dt.strptime(secondListT[i],'%a %b %d %H:%M:%S +0000 %Y'))
 
-dt_listT = []
-dt_listG = []
+    listTweets = list(zip(tweetList, dt_listT))
 
-#Conversion of datetime
-for i in range(20):
-    dt_listT.append(dt.strptime(secondListT[i],'%a %b %d %H:%M:%S +0000 %Y'))
-    dt_listG.append(dt.strptime(secondListG[i],'%Y-%m-%dT%H:%M:%SZ'))
+    for j in range(10):
+        print(listTweets[j][0])
 
-allTweets = list(zip(tweetList, dt_listT))
-allNews = list(zip(newsList, dt_listG))
+def google_res(listNews):
+    newsList, secondListG = zip(*listNews)
+    dt_listG = []
 
-allFeedUnsorted = []
-allFeedUnsorted = allTweets + allNews
-allFeedSorted = sorted(
-    allFeedUnsorted,
-    key=lambda x: dt.strftime(x[1], '%m/%d/%y %H:%M'), reverse=True
-)
+    #Conversion of datetime
+    for i in range(10):
+        dt_listG.append(dt.strptime(secondListG[i],'%Y-%m-%dT%H:%M:%SZ'))
 
-for j in range(20):
-    print(allTweets[j][0])
+    listNews = list(zip(newsList, dt_listG))
 
-#for tweets in range(20):
-#    print(tweets, ".", firstListT[tweets])
-#
-#for news in range(20):
-#    print(news, ".", firstListG[news])
-#    print(secondListG[news])
+    for k in range(10):
+        print(listNews[k][0])
+        print("URL: ", urlNews[k])
+
+
+if allTweets and allNews:
+    twitter_res(allTweets)
+    google_res(allNews)
+
+elif allTweets and (not allNews):
+    twitter_res(allTweets)
+
+elif (not allTweets) and allNews:
+    google_res(allNews)
+
+elif (not allTweets) and (not allNews):
+    pass
+    print("No news")
