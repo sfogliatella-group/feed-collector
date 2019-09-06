@@ -1,3 +1,4 @@
 controller/config_google.py
-controller/config_twitter.pycontroller/__pycache__
+controller/config_twitter.py
+controller/__pycache__
 
