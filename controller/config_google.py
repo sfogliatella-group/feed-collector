@@ -1,0 +1,1 @@
+api_key_google = "19d001b73d014c9bac431d78db0be537"
